@@ -1,4 +1,4 @@
-# gensim使用--word2vec,fast-text
+# Gensim使用--word2vec,fast-text
 ##### 研究生课程海量数据处理必做作业2-gensim的使用
 
 ####Gensim简介
@@ -105,6 +105,7 @@ print('和西瓜语义最接近的几个词:',model.wv.most_similar('西瓜'))
 ```
 ##### 结果（西瓜是OOV）
 
+![38931b64194cea1b359069fe3dee21d](https://user-images.githubusercontent.com/51854482/144811393-480533ae-93cf-4ead-a90a-34f6a91ae0c1.png)
 
 
 
