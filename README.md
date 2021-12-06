@@ -1,6 +1,9 @@
 # gensim使用--word2vec,fast-text
 ##### 研究生课程海量数据处理必做作业2-gensim的使用
 
+####Gensim简介
+Gensim是⼀款开源的第三⽅Python⼯具包，⽤于从原始的⾮结构化的⽂本中，⽆监督地学习到⽂本隐层的主题向量表达。  
+它⽀持包括TF-IDF，LSA，LDA，和word2vec在内的多种主题模型算法，⽀持流式训练，并提供了诸如相似度计算，信息检索等⼀些常⽤任务的API接口
 
 ## 一、训练Word2vec词向量模型
 
@@ -10,7 +13,7 @@
     
     Word2vec包含两种模型，一是CNOW模型，通过给定一个中心词周围的词 去预测中心词，来训练模型表示词的能力；另一种模型则是通过中心词去预测周围的词，叫做skip-gram模型（跳词模型）。本次实验主要使用跳词模型。
 
-#####1.1首先获取数据并处理
+##### 1.1首先获取数据并处理
   数据使用的是微博评论数据集，包含很多无关内容，对其进行清洗和分词得到训练数据。  
 ```python
 #coding=utf-8
@@ -74,7 +77,7 @@ with open('test.csv','r',encoding='utf-8') as f:
             k.write(final)
 ```
 
-接下来读取训练数据，训练一个word2vec模型，然后使用训练得到的词向量来计算两个词之间的相似度
+##### 1.2 接下来读取训练数据，训练一个word2vec模型，然后使用训练得到的词向量来计算两个词之间的相似度
 ```python
 data = word2vec.Text8Corpus("testJieba2.txt")
 #训练语料
@@ -88,7 +91,20 @@ print('和西装语义最接近的几个词:',model.wv.most_similar('西装'))
 #model = word2vec.Word2Vec.load('W2V.model')
 #print(model['幸福'])  #幸福的词向量
 ```
-结果：
+##### 结果：
 ![image](https://user-images.githubusercontent.com/51854482/144807076-2f8d2f86-ae94-41c1-bd3d-1c4dca7e529f.png)
+
+
+## 二、训练Word2vec词向量模型
+  word2vec模型没有办法对OOV进行处理，所以使用FastText
+##### 只需要改一行训练代码
+```python
+model = fasttext.FastText(data2,  size=4, window=3, min_count=1, iter=10,min_n = 3 , max_n = 6,word_ngrams = 0)
+model.save('model.model')
+print('和西瓜语义最接近的几个词:',model.wv.most_similar('西瓜'))
+```
+##### 结果（西瓜是OOV）
+
+
 
 
