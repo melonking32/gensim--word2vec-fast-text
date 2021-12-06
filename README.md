@@ -1,7 +1,7 @@
 # Gensim使用--word2vec,fast-text
 ##### 研究生课程海量数据处理必做作业2-gensim的使用
 
-####Gensim简介
+#### Gensim简介
 Gensim是⼀款开源的第三⽅Python⼯具包，⽤于从原始的⾮结构化的⽂本中，⽆监督地学习到⽂本隐层的主题向量表达。  
 它⽀持包括TF-IDF，LSA，LDA，和word2vec在内的多种主题模型算法，⽀持流式训练，并提供了诸如相似度计算，信息检索等⼀些常⽤任务的API接口
 
